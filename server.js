@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3500;
 const path = require('path');
-const fs = require('fs');
-const fsPromises = require('fs').promises;
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require("./middleware/errorHandler");
 
@@ -12,8 +10,21 @@ const cors = require('cors');
 // middleware for logger
 app.use(logger);
 
-// cors
-app.use(cors());
+// cors whitelisting
+const whitelist = ['https://127.0.0.1:5500', 'https://localhost:3500'];
+const corsOptions = {
+    origin: (origin, callback) => {
+        // checks if origin is in the list
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
+
 
 // urlencoded date
 app.use(express.urlencoded( { entended: false }));
@@ -42,6 +53,7 @@ app.all(/^.*$/, (req, res) => {
   }
 });
 
+// middleware for error handling
 app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server running on: ${PORT}`))
