@@ -1,0 +1,5 @@
+20250724	21:56:06	260b2443-db42-4f4b-8816-211c742f9897	GET	undefined	/index
+20250724	21:56:06	0ae8e768-c133-4f43-95ea-25d631ae0835	GET	undefined	/css/style.css
+20250724	21:56:06	a966ded3-2926-4d6d-b2b1-fde825551b2c	GET	undefined	/img/kinlie1.jpg
+20250724	22:02:56	d105a5a9-8c0f-468d-b506-7538dd934fcb	GET	undefined	/inde
+20250724	22:02:56	c7c63104-cccb-40b2-b972-4de05aaecd3d	GET	undefined	/css/style.css
