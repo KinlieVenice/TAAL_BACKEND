@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "report_title": "Theft Incident in Room 7",
+    "type_of_incident": "Theft",
+    "who": "EJ Dela Cruz",
+    "what": "Unauthorized individual entered and stole a laptop",
+    "when": "2025-07-01T18:28:00",
+    "where": "Room 7, Engineering Building",
+    "why": "The door was accidentally left unlocked after class dismissal",
+    "how": "The perpetrator entered through the unlocked door and quickly left with the item",
+    "reported_by": "Security Officer Reyes",
+    "status": "solved",
+    "full_report": "On July 1, 2025 at 6:28 PM, a theft incident occurred in Room 7 of the Engineering Building. EJ Dela Cruz reported that an unauthorized individual entered the room and stole a laptop. The incident happened because the door was accidentally left unlocked after class dismissal, allowing the perpetrator to enter and quickly leave with the item. The case was investigated and has been marked as solved by Security Officer Reyes."
+  },
+  {
+    "id": 2,
+    "report_title": "Trespassing at Back Gate",
+    "type_of_incident": "Trespassing",
+    "who": "Unknown male suspect",
+    "what": "Attempted to access the premises through the restricted back gate",
+    "when": "2025-07-22T03:45:00",
+    "where": "Back gate near parking lot",
+    "why": "Suspect was possibly trying to gain unauthorized entry to the facility",
+    "how": "Climbed over the fence despite posted warning signs",
+    "reported_by": "Guard Manalo",
+    "status": "under_investigation",
+    "full_report": "At approximately 3:45 AM on July 22, 2025, an unknown male suspect attempted to trespass through the restricted back gate near the parking lot. The suspect climbed over the fence despite posted warning signs. It is believed he was trying to gain unauthorized access to the facility. The incident was reported by Guard Manalo and is currently under investigation."
+  }
+]
