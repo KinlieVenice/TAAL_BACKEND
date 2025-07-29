@@ -20,12 +20,19 @@ app.use(express.urlencoded( { extended: false }));
 
 // json middleware for auto parse
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
 
+// API routes
 app.use("/reports", require("./routes/api/reports"));
 
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Frontend routes
 app.use('/', require('./routes/root'));
 
+
+
+// Catch-all 404
 app.all(/^.*$/, (req, res) => {
   res.status(404);
   if (req.accepts("html")) {
