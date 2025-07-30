@@ -1,4 +1,5 @@
 const data = {};
+
 data.reports = require("../model/reports.json");
 
 const createReport = (req, res) => {
