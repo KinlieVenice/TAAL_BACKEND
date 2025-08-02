@@ -1,12 +1,19 @@
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3501;
-const path = require('path');
-const { logger } = require('./middleware/logEvents');
+const path = require("path");
+const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
 
-const cors = require('cors');
-const corsOptions = require('./config/corsOption')
+const cors = require("cors");
+const corsOptions = require("./config/corsOption");
+
+const mongoose = require("mongoose");
+const connectDB = require("./config/dbConn");
+
+// for connecting to mongodb
+connectDB();
 
 // middleware for logger
 app.use(logger);
@@ -15,7 +22,7 @@ app.use(logger);
 app.use(cors(corsOptions));
 
 // urlencoded date
-app.use(express.urlencoded( { extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 // json middleware for auto parse
 app.use(express.json());
@@ -24,15 +31,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Frontend routes
-app.use('/', require('./routes/root'));
+app.use("/", require("./routes/root"));
 
 // API routes
 app.use("/reports", require("./routes/api/reports"));
 
-app.get("/test", (req, res) => {
-  console.log('success')
-  res.send("Test successful");
-});
 
 // Catch-all 404
 app.all(/^.*$/, (req, res) => {
@@ -49,4 +52,7 @@ app.all(/^.*$/, (req, res) => {
 // middleware for error handling
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on: ${PORT}`))
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+  app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+});
