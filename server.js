@@ -12,7 +12,6 @@ const corsOptions = require('./config/corsOption')
 app.use(logger);
 
 // cors whitelisting
-
 app.use(cors(corsOptions));
 
 // urlencoded date
@@ -21,16 +20,19 @@ app.use(express.urlencoded( { extended: false }));
 // json middleware for auto parse
 app.use(express.json());
 
-// API routes
-app.use("/reports", require("./routes/api/reports"));
-
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
 
 // Frontend routes
 app.use('/', require('./routes/root'));
 
+// API routes
+app.use("/reports", require("./routes/api/reports"));
 
+app.get("/test", (req, res) => {
+  console.log('success')
+  res.send("Test successful");
+});
 
 // Catch-all 404
 app.all(/^.*$/, (req, res) => {
