@@ -232,3 +232,8 @@
 20250802	23:44:09	b8973808-a1c5-49bd-9997-7b2a7bdcce98	PUT	undefined	/reports
 20250802	23:45:28	f6624845-1d05-4be0-9903-ac1b5952ab88	PUT	undefined	/reports
 20250802	23:46:05	b9d75021-e279-40b5-9f49-11fa14c93762	DELETE	undefined	/reports
+20250803	16:15:44	c840248e-bf1c-4e00-aaca-a8fe837d0655	POST	undefined	/register
+20250803	16:15:51	8dc07c0c-983d-4714-9e76-9c86067ace22	GET	undefined	/register
+20250803	16:15:51	22035b96-6f0e-4678-a9ff-49c4950eec12	GET	undefined	/css/style.css
+20250803	16:17:21	07714c6c-34cc-4e26-9d5d-16237eae04b0	POST	undefined	/register
+20250803	16:17:23	7d805f31-476d-4665-9873-a157c5be1030	POST	undefined	/register

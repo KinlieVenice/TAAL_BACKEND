@@ -32,6 +32,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Frontend routes
 app.use("/", require("./routes/root"));
+app.use("/register", require("./routes/register"));
+
 
 // API routes
 app.use("/reports", require("./routes/api/reports"));
