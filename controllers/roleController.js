@@ -1,6 +1,6 @@
 const User = require("../model/User");
 
-const updateUserRole = async (req, res) => {
+const updateRole = async (req, res) => {
   if (!req?.body?.id) {
     return res.status(400).json({ message: "ID is required" });
   }

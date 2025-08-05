@@ -1,62 +1,69 @@
 const Report = require("../model/Report");
+const generateFullReportAI = require("../utils/generateFullReportAI")
 
 const createReport = async (req, res) => {
-  if (
-    !req?.body?.title ||
-    !req?.body?.incidentType ||
-    !req?.body?.report.What ||
-    !req?.body?.report.When ||
-    !req?.body?.report.Where ||
-    !req?.body?.report.Why ||
-    !req?.body?.report.How ||
-    !req?.body?.report.Who ||
-    !req?.body?.report.fullReport ||
-    !req?.body?.reportBy ||
-    !req?.body?.currentStatus
-  ) {
-    return res.status(400).json({ message: "All report fields are required." });
-  };
-//   const user = req.user; // change the reportBy after auth.js
-  try {
-    const result = await Report.create({
-      title: req.body.title,
-      incidentType: req.body.incidentType,
-      report: {
-        Who: req.body.report.Who,
-        What: req.body.report.What,
-        When: req.body.report.When,
-        Where: req.body.report.Where,
-        Why: req.body.report.Why,
-        How: req.body.report.How,
-        fullReport: req.body.report.fullReport,
-      },
-      reportBy: req.body.reportBy,
-      currentStatus: req.body.currentStatus,
-    });
+  const { title, incidentType, report, reportBy, currentStatus } = req.body;
 
-    res.status(201).json(result);
-  } catch (err) {
-    res.status(500).json({ 'message': err.message });
+  if (
+    !title ||
+    !incidentType ||
+    !report?.Who ||
+    !report?.What ||
+    !report?.When ||
+    !report?.Where ||
+    !report?.Why ||
+    !report?.How ||
+    !reportBy ||
+    !currentStatus
+  ) {
+    return res.status(400).json({ message: "Missing required fields." });
   }
 
+  try {
+    const newReport = await Report.create({
+      title,
+      incidentType,
+      report, // includes Who, What, etc., including fullReport if generated
+      reportBy,
+      currentStatus,
+    });
+
+    const aiReport = await generateFullReportAI(newReport);
+    console.log("AI Summary:", aiReport); // <-- add this
+
+    
+    if (aiReport) {
+      newReport.report.fullReport = aiReport.trim();
+      newReport.markModified("report"); // <-- this is the fix
+      await newReport.save();
+    }
+
+    res
+      .status(201)
+      .json({ message: "Report created successfully", report: newReport });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error saving report" });
+  }
 };
 
 const getAllReports = async (req, res) => {
   const reports = await Report.find(); //to get all
-  if (!reports)
-    return res.status(204).json({ message: "No reports found" });
+  if (!reports) return res.status(204).json({ message: "No reports found" });
   res.json(reports);
 };
 
 const getReport = async (req, res) => {
-  if (!req?.params?.id) return res.status(400).json({ message: `ID is required` });
+  if (!req?.params?.id)
+    return res.status(400).json({ message: `ID is required` });
   const report = await Report.findOne({ _id: req.params.id });
   if (!report) {
-    return res.status(204).json({ message: `Report ID ${req.params.id} not found` });
+    return res
+      .status(204)
+      .json({ message: `Report ID ${req.params.id} not found` });
   }
 
   res.json(report);
-
 };
 
 const updateReport = async (req, res) => {
@@ -90,10 +97,13 @@ const updateReport = async (req, res) => {
 };
 
 const deleteReport = async (req, res) => {
-  if (!req?.body?.id) return res.status(400).json({ message: `ID is required` });
+  if (!req?.body?.id)
+    return res.status(400).json({ message: `ID is required` });
   const report = await Report.findOne({ _id: req.body.id });
   if (!report) {
-    return res.status(204).json({ message: `Report ID ${req.body.id} not found` });
+    return res
+      .status(204)
+      .json({ message: `Report ID ${req.body.id} not found` });
   }
   const result = await Report.deleteOne({ _id: req.body.id });
 

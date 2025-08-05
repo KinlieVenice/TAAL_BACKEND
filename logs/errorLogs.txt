@@ -1,3 +1,7 @@
 20250802	22:17:34	f3a63df9-1f4b-4ce2-a196-b2a0e5920618	Error: This is a test error
 20250802	23:40:09	3722f36d-2ff4-4a57-b257-fe34190b673f	SyntaxError: Expected ',' or '}' after property value in JSON at position 42 (line 3 column 3)
 20250802	23:43:00	233c788c-c027-4a2a-be4b-f3c91e961ee9	SyntaxError: Expected double-quoted property name in JSON at position 41 (line 3 column 1)
+20250805	11:26:54	33bf07ae-981d-4bbe-9f3d-bceb6a381628	ReferenceError: reportBy is not defined
+20250805	11:27:00	90c63896-499e-4b73-910b-09de27baa249	ReferenceError: reportBy is not defined
+20250805	11:27:42	30a6e67d-f4ae-4421-83aa-4ed5c8347b32	ReferenceError: reportBy is not defined
+20250805	11:28:29	34cce2ab-c15d-4e02-ba89-6fe2c18f936c	ReferenceError: reportBy is not defined

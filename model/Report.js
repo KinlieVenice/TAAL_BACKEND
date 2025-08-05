@@ -37,7 +37,7 @@ const reportSchema = new Schema({
     },
     fullReport: {
       type: String,
-      required: true
+      required: false
     },
   },
   reportBy: {
@@ -45,7 +45,7 @@ const reportSchema = new Schema({
     required: true,
   },
   currentStatus: {
-    type: String,
+    type: String, //pending or resolved
     required: true,
   }
 });
