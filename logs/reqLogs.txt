@@ -315,3 +315,5 @@
 20250805	13:54:05	77a8c5fd-f81c-4cdc-81a6-98da2c1d27c7	POST	undefined	/reports
 20250805	13:55:50	410d3440-d069-422a-85ff-0af299ff1662	POST	undefined	/reports
 20250805	13:56:48	b1e98451-6a8f-4b34-ad68-87d79c1db257	POST	undefined	/reports
+20250809	12:06:59	a4e5ac27-d257-417f-8395-404f77da98aa	POST	undefined	/register
+20250809	12:07:44	57ce8600-92e2-4f47-96dd-73d974787781	POST	undefined	/auth
