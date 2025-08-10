@@ -5,3 +5,11 @@
 20250805	11:27:00	90c63896-499e-4b73-910b-09de27baa249	ReferenceError: reportBy is not defined
 20250805	11:27:42	30a6e67d-f4ae-4421-83aa-4ed5c8347b32	ReferenceError: reportBy is not defined
 20250805	11:28:29	34cce2ab-c15d-4e02-ba89-6fe2c18f936c	ReferenceError: reportBy is not defined
+20250809	12:29:41	61d41f09-a493-4e39-8610-4aa56181daa5	SyntaxError: Expected double-quoted property name in JSON at position 510 (line 11 column 3)
+20250809	15:20:54	ccfc23ba-372b-445f-b4b1-1675683e9a87	TypeError: res.status.json is not a function
+20250810	12:02:47	89d1206f-be87-4c92-beb7-59daaac351a6	TypeError: res.status.json is not a function
+20250810	12:03:06	5cfe6770-feeb-49d5-bd62-18bcc303c30d	TypeError: res.status.json is not a function
+20250810	12:03:49	e1027ea6-c3d2-4115-8f0c-335ca52321d5	TypeError: res.status.json is not a function
+20250810	14:07:33	0e75e877-a503-4b9c-a987-bfdf8824c790	TypeError: Cannot read properties of undefined (reading 'jwt')
+20250810	14:12:55	cc5ff2f7-d6f8-4d3b-a342-13b0c8d54df8	TypeError: Cannot read properties of undefined (reading 'jwt')
+20250810	14:18:13	ce1f7fb2-c53e-492d-8aec-d147053bff80	TypeError: Cannot read properties of undefined (reading 'jwt')

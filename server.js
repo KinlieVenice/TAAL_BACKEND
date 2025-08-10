@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3501;
 const path = require("path");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
+const credentials = require("./middleware/credentials")
 
 const cors = require("cors");
 const corsOptions = require("./config/corsOption");
@@ -17,6 +18,11 @@ connectDB();
 
 // middleware for logger
 app.use(logger);
+
+
+// middleware for credentials
+app.use(credentials);
+
 
 // cors whitelisting
 app.use(cors(corsOptions));
@@ -34,7 +40,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/root"));
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));
-
+app.use("/refresh", require("./routes/refresh"));
+app.use("/logout", require("./routes/logout"));
 
 
 // API routes
