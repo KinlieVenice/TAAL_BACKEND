@@ -6,6 +6,7 @@ const path = require("path");
 const { logger } = require("./middleware/logEvents");
 const errorHandler = require("./middleware/errorHandler");
 const credentials = require("./middleware/credentials")
+const cookieParser = require("cookie-parser");
 
 const cors = require("cors");
 const corsOptions = require("./config/corsOption");
@@ -32,6 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // json middleware for auto parse
 app.use(express.json());
+
+// middleware for cookies
+app.use(cookieParser());
 
 // Static files
 app.use(express.static(path.join(__dirname, "public")));

@@ -8,7 +8,6 @@ const handleLogin = async (req, res) => {
     return res.status(400).json({ message: "Both username and password needed" });
 
   const foundUser = await User.findOne({ username });
-
   if (!foundUser) return res.sendStatus(401);
 
   const match = await bcrypt.compare(password, foundUser.password);
