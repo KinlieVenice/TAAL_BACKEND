@@ -48,8 +48,12 @@ app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
 
 
+
 // API routes
 app.use("/reports", require("./routes/api/reports"));
+app.use("/users", require("./routes/api/roles"));
+
+
 
 
 // Catch-all 404

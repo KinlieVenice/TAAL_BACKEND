@@ -5,7 +5,7 @@ const handleLogout = async (req, res) => {
     if (!cookies?.jwt) return res.sendStatus(204);
     const refreshToken = cookies.jwt;
 
-    const foundUser = await User.fineOne({ refreshToken })
+    const foundUser = await User.findOne({ refreshToken })
     if (!foundUser) {
         res.clearCookie("jwt", {
             http: true,
@@ -20,7 +20,7 @@ const handleLogout = async (req, res) => {
       http: true,
       sameSite: "None",
     });
-    res.sendStatus(204);
+    res.sendStatus(200);
 };
 
 module.exports = { handleLogout }
